@@ -3,6 +3,8 @@ name: Build and Push Docker Image
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '0 3 * * 1'  # every Monday at 3am UTC
 
 jobs:
   build:
