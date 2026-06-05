@@ -5,6 +5,7 @@ on:
     branches: [main]
   schedule:
     - cron: '0 3 * * 1'  # every Monday at 3am UTC
+  workflow_dispatch:  # enables manual runs
 
 jobs:
   build:
