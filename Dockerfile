@@ -1,6 +1,12 @@
 FROM n8nio/runners:latest
 USER root
 
+# Pin pnpm to the major version already used by the base image's store
+# (corepack otherwise resolves to the latest pnpm, whose store format is
+# incompatible with the existing node_modules and fails with
+# ERR_PNPM_UNEXPECTED_STORE)
+RUN corepack prepare pnpm@10 --activate
+
 # Install packages
 RUN cd /opt/runners/task-runner-javascript && pnpm add pdf-lib moment axios
 
